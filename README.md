@@ -1,92 +1,69 @@
-# 📧 Spam Email Detection
+# 📧 Spam Email Classification
 
-## 📁 Project Overview
+## 📌 Overview
 
-This repository implements a pipeline for **classifying emails** as spam or non-spam. Key features:
+This project develops a robust machine learning pipeline to classify emails as **spam** or **non-spam**. The workflow includes data preprocessing, multiple classification algorithms, cost-sensitive learning, nested cross-validation, and comprehensive performance evaluation.
 
-- Data preprocessing and feature scaling
-- Multiple classification algorithms
-- Cost-sensitive learning (10:1 false positive cost)
-- Nested cross-validation for unbiased performance
-- Detailed evaluation metrics and visualizations
+## 🎯 Problem Statement
 
----
+Given the UCI Spambase dataset, the objectives are to:
+1. Build and tune several classifiers to distinguish spam from non-spam emails.
+2. Incorporate a **10∶1 cost ratio** to penalize false positives more heavily.
+3. Use nested cross-validation to avoid overfitting during hyperparameter search.
+4. Compare models on a range of metrics and choose the best overall and cost-sensitive classifiers.
 
-## 📂 Repository Structure
+## 📁 Dataset
 
-```
-spam-email-detection/
-├── data/
-│   └── spambase.data
-├── notebooks/
-│   └── Spam_Email_Prediction.ipynb
-├── src/
-│   └── data_preprocessing.py
-│   └── model_training.py
-│   └── evaluation.py
-├── requirements.txt
-└── README.md
-```
+- **Source**: UCI Machine Learning Repository – [Spambase](http://archive.ics.uci.edu/ml/datasets/Spambase)  
+- **Files**:
+  - `spambase.data`: 4,601 samples × 58 attributes  
+  - `spambase.names` & `spambase.DOCUMENTATION`: attribute descriptions  
 
----
+### Attributes
 
-## 🔧 Installation & Usage
+- **1–57**: continuous features (word/punctuation frequencies, capitalization patterns)  
+- **58**: binary label (`1` = spam, `0` = non-spam)
 
-1. **Clone the repository**  
-   ```bash
-   git clone https://github.com/yourusername/spam-email-detection.git
-   cd spam-email-detection
-   ```
+## 🧠 Models Implemented
 
-2. **Install dependencies**  
-   ```bash
-   pip install -r requirements.txt
-   ```
+| Model                   | Key Hyperparameters            |
+|-------------------------|--------------------------------|
+| Logistic Regression     | `C`, `penalty`                 |
+| k-NN Classifier         | `n_neighbors`                  |
+| Decision Tree           | `max_depth`, `min_samples_leaf`|
+| SVM                     | `C`, `kernel`, `gamma`         |
+| MLP Neural Network      | `hidden_layer_sizes`, `alpha`  |
+| Random Forest           | `n_estimators`, `max_depth`    |
+| Gradient Boosting       | `n_estimators`, `learning_rate`|
 
-3. **Run the notebook**  
-   ```bash
-   jupyter notebook notebooks/Spam_Email_Prediction.ipynb
-   ```
+- **Preprocessing**:  
+  - Continuous features normalized via `StandardScaler`  
+  - Binary indicators retained without scaling
 
-Or execute the scripts in `src/` for modular workflows.
+- **Cost-Sensitive Learning**:  
+  - Sample weights applied with a 10∶1 ratio (false positive cost = 10 × false negative)
 
----
-
-## 🛠 Methodology
-
-1. **Data Preprocessing**  
-   - Load dataset (`spambase.data`)
-   - Normalize continuous features with `StandardScaler`
-   - Retain binary indicators without scaling
-
-2. **Modeling & Tuning**  
-   - Algorithms: Logistic Regression, k-NN, Decision Tree, SVM, MLP Neural Network, Random Forest, Gradient Boosting  
-   - Hyperparameter tuning via nested `GridSearchCV`
-
-3. **Cost-Sensitive Learning**  
-   - Apply a **10:1 cost ratio** for false positives vs. false negatives using sample weights
-
-4. **Evaluation & Visualization**  
-   - Metrics: Accuracy, Precision, Recall, F1-Score, ROC AUC, Average Misclassification Cost  
-   - Visuals: Combined ROC curves, CONFusion matrices, lift charts  
-
----
+- **Hyperparameter Tuning**:  
+  - Nested cross-validation with `GridSearchCV` (inner loop) and `cross_val_score` (outer loop)
 
 ## 📊 Key Results
 
-| Model                   | ROC AUC | Avg. Misclassification Cost |
-|-------------------------|---------|-----------------------------|
-| Logistic Regression     | 0.95    | 1.8                         |
-| Random Forest           | 0.97    | 1.3                         |
-| Gradient Boosting       | 0.98    | 1.1                         |
-| MLP Neural Network      | 0.96    | 1.6                         |
+| Model               | AUC   | Avg. Misclassification Cost |
+|---------------------|-------|-----------------------------|
+| Logistic Regression | 0.95  | 1.8                         |
+| Random Forest       | 0.97  | 1.3                         |
+| Gradient Boosting   | 0.98  | 1.1                         |
+| MLP Neural Network  | 0.96  | 1.6                         |
 
-*Gradient Boosting with cost weighting achieved the best performance.*
+> **Best Overall Model:** Gradient Boosting achieved the highest AUC (0.98) and lowest average misclassification cost (1.1).
 
----
+## 📈 Future Improvements
+
+- Add **precision-recall curves** for further imbalance analysis  
+- Experiment with **stacking ensembles** to potentially improve performance  
+- Incorporate **text-based features** (e.g., TF-IDF, embeddings) alongside numeric attributes
 
 ## 👤 Author
 
 **Yi Hsiang (Royce) Yen**  
-Master of Science in Business Analytics  
-University of Minnesota  
+MS in Business Analytics, University of Minnesota  
