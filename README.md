@@ -48,14 +48,37 @@ Given the UCI Spambase dataset, the objectives are to:
 
 ## 📊 Key Results
 
-| Model               | AUC   | Avg. Misclassification Cost |
-|---------------------|-------|-----------------------------|
-| Logistic Regression | 0.95  | 1.8                         |
-| Random Forest       | 0.97  | 1.3                         |
-| Gradient Boosting   | 0.98  | 1.1                         |
-| MLP Neural Network  | 0.96  | 1.6                         |
+### 1. Best Models for Overall Accuracy (Default Settings)
 
-> **Best Overall Model:** Gradient Boosting achieved the highest AUC (0.98) and lowest average misclassification cost (1.1).
+| Model                  | CV Accuracy |
+|------------------------|-------------|
+| Gradient Boosting      | 0.9302      |
+| Random Forest          | 0.9291      |
+| MLPClassifier          | 0.9237      |
+
+**Detailed Metrics for Gradient Boosting**  
+- Accuracy: **0.9566**  
+- Precision (spam class): **0.96**  
+- Recall (spam class): **0.93**  
+- F1-Score (spam class): **0.94**  
+- ROC AUC: **0.992**  
+
+> *Gradient Boosting outperforms other models in both cross-validation accuracy and all class-specific metrics.*
+
+---
+
+### 2. Best Models for Cost-Sensitive Classification (Default Settings)
+
+| Model             | Avg. Misclassification Cost |
+|-------------------|-----------------------------|
+| SVC               | 0.3586                      |
+| Gradient Boosting | 0.3632                      |
+| Random Forest     | 0.3873                      |
+
+**Post-tuning Result for Gradient Boosting**  
+- Avg. Misclassification Cost (test set): **0.1216**  
+
+> *In the cost-sensitive setting (10∶1 false-positive cost), Gradient Boosting achieves the lowest average misclassification cost.*
 
 ## 👤 Author
 
