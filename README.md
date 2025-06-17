@@ -56,14 +56,13 @@ Given the UCI Spambase dataset, the objectives are to:
 | Random Forest          | 0.9291      |
 | MLPClassifier          | 0.9237      |
 
-**Detailed Metrics for Gradient Boosting**  
-- Accuracy: **0.9566**  
-- Precision (spam class): **0.96**  
-- Recall (spam class): **0.93**  
-- F1-Score (spam class): **0.94**  
-- ROC AUC: **0.992**  
-
-> *Gradient Boosting outperforms other models in both cross-validation accuracy and all class-specific metrics.*
+> **Top 3 (Default):** Gradient Boosting (0.9302), Random Forest (0.9291), MLPClassifier (0.9237)  
+> *Among these, Gradient Boosting also achieved the highest detailed metrics:*  
+> - Accuracy: **0.9566**  
+> - Precision (spam class): **0.96**  
+> - Recall (spam class): **0.93**  
+> - F1-Score (spam class): **0.94**  
+> - ROC AUC: **0.992**
 
 ---
 
@@ -75,10 +74,8 @@ Given the UCI Spambase dataset, the objectives are to:
 | Gradient Boosting | 0.3632                      |
 | Random Forest     | 0.3873                      |
 
-**Post-tuning Result for Gradient Boosting**  
-- Avg. Misclassification Cost (test set): **0.1216**  
-
-> *In the cost-sensitive setting (10∶1 false-positive cost), Gradient Boosting achieves the lowest average misclassification cost.*
+> **Top 3 (Default):** SVC (0.3586), Gradient Boosting (0.3632), Random Forest (0.3873)  
+> *After hyperparameter tuning, Gradient Boosting achieved the lowest test‐set cost:* **0.1216** 
 
 ## 👤 Author
 
