@@ -2,7 +2,7 @@
 
 ## 📌 Overview
 
-This project develops a robust machine learning pipeline to classify emails as **spam** or **non-spam**. The workflow includes data preprocessing, multiple classification algorithms, cost-sensitive learning, nested cross-validation, and comprehensive performance evaluation.
+This project develops a machine learning pipeline to classify emails as **spam** or **non-spam**. The workflow includes data preprocessing, multiple classification algorithms, cost-sensitive learning, nested cross-validation, and comprehensive performance evaluation.
 
 ## 🎯 Problem Statement
 
@@ -56,12 +56,6 @@ Given the UCI Spambase dataset, the objectives are to:
 | MLP Neural Network  | 0.96  | 1.6                         |
 
 > **Best Overall Model:** Gradient Boosting achieved the highest AUC (0.98) and lowest average misclassification cost (1.1).
-
-## 📈 Future Improvements
-
-- Add **precision-recall curves** for further imbalance analysis  
-- Experiment with **stacking ensembles** to potentially improve performance  
-- Incorporate **text-based features** (e.g., TF-IDF, embeddings) alongside numeric attributes
 
 ## 👤 Author
 
