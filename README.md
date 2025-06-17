@@ -1,9 +1,4 @@
-# 📧 Spam Email Detection Repository
-
-## 📌 Repository Name
-**spam-email-detection**
-
----
+# 📧 Spam Email Detection
 
 ## 📁 Project Overview
 
