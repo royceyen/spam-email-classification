@@ -2,7 +2,7 @@
 
 ## 📁 Project Overview
 
-This repository implements a comprehensive pipeline for **classifying emails** as spam or non-spam. Key features:
+This repository implements a pipeline for **classifying emails** as spam or non-spam. Key features:
 
 - Data preprocessing and feature scaling
 - Multiple classification algorithms
